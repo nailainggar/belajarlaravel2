@@ -122,4 +122,5 @@ Route::get('kontak',function()
    return view('kontak');
 });
 
-
+//crud
+Route::resource('dosen','DosenController');

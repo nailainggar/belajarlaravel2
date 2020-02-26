@@ -7,11 +7,10 @@ use Illuminate\Http\Request;
 
 class DosenController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function index()
     {
         $dosen = Dosen::all();
@@ -50,7 +49,7 @@ class DosenController extends Controller
      * @param  \App\Dosen  $dosen
      * @return \Illuminate\Http\Response
      */
-    public function show(Dosen $dosen)
+    public function show($id)
     {
         $dosen = Dosen::findOrFail($id);
         return view('dosen.show',compact('dosen'));
@@ -61,7 +60,7 @@ class DosenController extends Controller
      * @param  \App\Dosen  $dosen
      * @return \Illuminate\Http\Response
      */
-    public function edit(Dosen $dosen)
+    public function edit($id)
     {
         $dosen = Dosen::findOrFail($id);
         return view('dosen.edit',compact('dosen'));
